@@ -1,0 +1,40 @@
+%this script makes integrals out of the cropped coins
+
+%generate accurate x array bx linspace is garbage
+N = 500;
+x = zeros(1,N);
+xmax = 10;
+increment = xmax/N;
+for i = 1:N
+    x(i+1) = x(i) + increment;
+end
+
+%plot curve
+figure(1)
+y = -x+10;
+plot(x,y,'k');
+
+hold on
+img = imread('quarter.jpg');
+coinSize = 1.75;
+startPt = 0.01;
+condition = coinSize;
+
+for i = 1:length(x)
+    x1(1) = startPt;
+    x1(i+1) = startPt+i*coinSize;
+    if (x(i+1) >= y(i+1))
+        break;
+    end
+    for j = 1:length(x)
+        y1(1) = startPt;
+        y1(j+1) = startPt+j*coinSize;
+        if (y1(j+1) >= y(j+1))
+            break;
+        else
+        image('CData',img,'XData',[x1(i) x1(i+1)],'YData',[y1(j) y1(j+1)])
+        end
+    end
+    image('CData',img,'XData',[x1(i) x1(i+1)],'YData',[y1(j) y1(j+1)])
+end
+hold off
