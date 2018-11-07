@@ -10,7 +10,7 @@ function curve by a small amount
 *compare to area of function curve
 %}
 
-I = imread('nickelelement.jpg');
+I = imread('OriginalNickel.jpg');
 [nx,ny,d] = size(I) ;
 [X,Y] = meshgrid(1:ny,1:nx) ;
 imshow(I) ;
